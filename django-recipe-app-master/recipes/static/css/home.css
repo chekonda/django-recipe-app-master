@@ -1,0 +1,25 @@
+/* home.css */
+
+/* Add your CSS rules here */
+body {
+    background-color: #e10000; /* Dark background color */
+    color: #ffffff; /* White text color */
+    font-size: 1000px;
+}
+
+.container {
+    max-width: 9600px;
+    margin: 0 auto;
+    color: black;
+    /* background-color: rgb(113, 113, 113); */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+}

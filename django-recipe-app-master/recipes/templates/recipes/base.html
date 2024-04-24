@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}  
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% if title %}
+    <title>Django Recipes - {{title}}</title>
+    {% else %}
+    <title>Django Recipes</title>
+    {% endif %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+ 
+  <body >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'recipes-home' %}">Recipes App</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="{% url 'recipes-home' %}"
+                >Recipes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'recipes-about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'recipes-create' %}">Add Recipe</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'user-profile' %}"
+            >My Profile</a
+          >
+          <a class="nav-item nav-link" href="{% url 'user-logout' %}">Logout</a>
+          {% else %}
+          <a class="nav-item nav-link" href="{% url 'user-login' %}">Login</a>
+          <a class="nav-item nav-link" href="{% url 'user-register' %}"
+            >Register</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <div class="content m-auto max-width-1 my-2">
+      <div class="content-left">
+          <div class="blur">
+              <h1 style="font-size: 50px;">The heaven for food Bloggers</h1>
+              <p>TastyTales is a website where you can write your amazing food blogs. Not only that, you can add your cooking videos which, after approval, will be seen on our website.</p>
+          </div>
+      </div>
+  </div>
+   
+  </div>
+  
+  
+    <div class="container mt-4 col-8">
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% block content %} {% endblock %}
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <style>
+  body {
+    /* Dark background color */
+    background-color: rgba(225, 0, 0, 0.8); /* Add transparency for the glassy effect */
+    color: #ffffff; /* White text color */
+    background-image: url('https://img.freepik.com/free-photo/notebook-recipe-tomato-farfalle-garlic-onion-mortar-pepper-top-view-copy-space_141793-3458.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    position: relative; /* Required for z-index to work */
+    /* z-index: 1; */
+    
+}
+
+body::before {
+    /* content: ""; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit; /* Inherit the background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    filter: blur(3px); /* Add blur effect to the background image */
+}
+
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: rgba(86, 86, 86, 0.3);
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-image: url('https://img.pikbest.com/origin/10/48/71/22FpIkbEsTQ8b.jpg!w700wp');
+    background-repeat: no-repeat;
+    background-size: cover; /* Cover the entire content */
+    padding: 20px; /* Add padding to ensure content is not too close to the edges */
+    position: relative; /* Required for z-index to work */
+    top: -10px;
+}
+
+.content-left {
+    font-family: var(--font1);
+    width: 100%; /* Adjust width to make it full width */
+    padding: 50px;
+    z-index: 1;
+}
+
+.blur {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    padding: 15px;
+}
+
+.blur h1,
+.blur p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center; /* Center align text */
+}
+
+.content-right {
+    width: 100%; /* Adjust width to make it full width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+ </style>
+</html>
